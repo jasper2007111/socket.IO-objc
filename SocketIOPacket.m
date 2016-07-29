@@ -84,7 +84,8 @@
     NSNumber *typeNumber = [self typeAsNumber];
     if (!(self.endpoint == nil || [@"/" isEqualToString:self.endpoint]) && [typeNumber intValue] != 6 && [typeNumber intValue] != 2)
     {
-        [encoded addObject:[self.endpoint stringByAppendingString:@","]];
+        // 解决Node v0.10.33，后台无法接收事件的问题，新的版本去掉了','。
+        //[encoded addObject:[self.endpoint stringByAppendingString:@","]];
     } 
 
     NSString *pIdL = self.pId != nil ? self.pId : @"";
